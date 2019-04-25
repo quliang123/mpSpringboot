@@ -1,0 +1,45 @@
+#�˿�
+server:
+  port: 8080
+#���ݿ�
+spring:
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          url: jdbc:mysql://47.99.194.58:3306/ipaydb_biz2?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=false
+          username: root
+          password: testWebMysql
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        slave_1:
+          url: jdbc:mysql://47.99.194.58:3306/ipaydb_biz2?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=false
+          username: root
+          password: testWebMysql
+          driver-class-name: com.mysql.cj.jdbc.Driver
+
+  #����freemarker
+  freemarker:
+    cache: false
+    charset: UTF-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+  mvc:
+    static-path-pattern: /static/**
+
+#mybatis plus
+mybatis-plus:
+  mapper-locations: classpath:com/example/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #  开启下划线转驼峰
+    map-underscore-to-camel-case: true
+  #  刷新mapper文件调神器
+  refresh-mapper: true
+
+
